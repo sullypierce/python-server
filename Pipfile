@@ -5,8 +5,8 @@ name = "pypi"
 
 [packages]
 autopep8 = "*"
-watchgod = "*"
 watchdog = "*"
+watchgod = "*"
 
 [dev-packages]
 
