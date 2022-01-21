@@ -1,6 +1,6 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from animals import get_all_animals, get_single_animal, create_animal, delete_animal
-from locations import get_all_locations, get_single_location, create_location
+from locations import get_all_locations, get_single_location, create_location, delete_location
 from customers import get_all_customers, get_single_customer, create_customer, delete_customer
 from employees import get_all_employees, get_single_employee, create_employee, delete_employee
 import json
@@ -139,6 +139,8 @@ class HandleRequests(BaseHTTPRequestHandler):
             delete_customer(id)
         elif resource == "employees":
             delete_employee(id)
+        elif resource == "locations":
+            delete_location(id)
 
         # send a response
         self.wfile.write("".encode())
