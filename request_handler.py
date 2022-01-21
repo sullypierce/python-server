@@ -1,7 +1,8 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from animals import get_all_animals, get_single_animal, create_animal
 from locations import get_all_locations, get_single_location, create_location
-from customers import get_all_customers, get_single_customer
+from customers import get_all_customers, get_single_customer, create_customer
+from employees import get_all_employees, get_single_employee, create_employee
 import json
 
 
@@ -77,6 +78,13 @@ class HandleRequests(BaseHTTPRequestHandler):
 
             else:
                 response = f"{get_all_customers()}"
+                
+        elif resource == "employees":
+            if id is not None:
+                response = f"{get_single_employee(id)}"
+
+            else:
+                response = f"{get_all_employees()}"
 
         self.wfile.write(response.encode())
 
@@ -102,6 +110,10 @@ class HandleRequests(BaseHTTPRequestHandler):
             new_object = create_animal(post_body)
         elif resource == "locations":
             new_object = create_location(post_body)
+        elif resource == "employees":
+            new_object = create_employee(post_body)
+        elif resource == "customers":
+            new_object = create_customer(post_body)
         
 
         # Encode the new animal and send in response
