@@ -12,6 +12,8 @@ CREATE TABLE `Customer` (
     `password`    TEXT NOT NULL
 );
 
+SELECT 'Animal';
+
 CREATE TABLE `Animal` (
 	`id`  INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
 	`name`  TEXT NOT NULL,
