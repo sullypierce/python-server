@@ -12,7 +12,13 @@ CREATE TABLE `Customer` (
     `password`    TEXT NOT NULL
 );
 
-SELECT 'Animal';
+SELECT
+            c.id,
+            c.name,
+            c.address,
+            c.email,
+            c.password
+        FROM customer c;
 
 CREATE TABLE `Animal` (
 	`id`  INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
