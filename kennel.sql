@@ -13,12 +13,17 @@ CREATE TABLE `Customer` (
 );
 
 SELECT
-            c.id,
-            c.name,
-            c.address,
-            c.email,
-            c.password
-        FROM customer c;
+            a.id,
+            a.name,
+            a.breed,
+            a.status,
+            a.location_id,
+            a.customer_id,
+            l.name location_name,
+            l.address location_address
+        FROM Animal a
+        JOIN Location l
+            ON l.id = a.location_id;
 
 CREATE TABLE `Animal` (
 	`id`  INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
