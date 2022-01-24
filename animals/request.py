@@ -118,14 +118,16 @@ def create_animal(animal):
     # Return the dictionary with `id` property added
     return animal
 
-def get_animals_by_location(location_id):
+def get_animals_by_key(key, value):
 
     with sqlite3.connect("./kennel.db") as conn:
         conn.row_factory = sqlite3.Row
         db_cursor = conn.cursor()
 
+
+        
         # Write the SQL query to get the information you want
-        db_cursor.execute("""
+        db_cursor.execute(f"""
         SELECT
             a.id,
             a.name,
@@ -133,9 +135,9 @@ def get_animals_by_location(location_id):
             a.status,
             a.location_id,
             a.customer_id
-        FROM animal a
-        WHERE a.location_id = ?
-        """, ( location_id, ))
+        FROM animal a\n"""
+        f"WHERE a.{key} = ?"
+        , ( value, ))
 
         animals = []
         dataset = db_cursor.fetchall()
